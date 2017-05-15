@@ -7,7 +7,11 @@
     Bingo.prototype = {
         init: function(num){
             // create bingo array
-            this.bingoArray = Array.from(Array(num+1).keys()).slice(1);
+            //this.bingoArray = Array.from(Array(num+1).keys()).slice(1);
+            this.bingoArray = [];
+            for( var i=1; i<=num;i++ ){
+                this.bingoArray.push(i);
+            }
 
             // initialize value
             this.timer = null;
