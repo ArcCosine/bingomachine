@@ -3,7 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <title>BINGO MACHINE</title>
-  <link href="css/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+body {
+  background: #e0e0e0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 40px;
+}
+    .panel {
+      display: inline-block;
+      width: 240px;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      color: #00aaff;
+      font-weight: bold;
+      font-size: 240px;
+      line-height: 240px;
+      background: #fff;
+    }
+    .panel + .panel {
+      margin-left: 20px;
+    }
+    .panel.unmatched {
+      opacity: 0.5;
+    }
+
+    .BingoPanel {
+      display: inline-block;
+      width: 120px;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      color: #00aaff;
+      font-weight: bold;
+      font-size: 120px;
+      line-height: 128px;
+      background: #fff;
+    }
+    .BingoPanel + .BingoPanel {
+      margin-left: 20px;
+    }
+    .BingoPanel.unmatched {
+      opacity: 0.5;
+    }
+
+    .bingo {
+      display: inline-block;
+      width: 30px;
+      padding: 3.5px;
+      opacity: 0.5;
+      border-radius: 2.5px;
+      margin-bottom: 7.5px;
+      color: #00aaff;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 32px;
+      background: #fff;
+    }
+    .bingo + .bingo {
+      margin-left: 5px;
+    }
+    .bingo.unmatched {
+      opacity: 1.0;
+      background: #FFFF00 ;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 60px;
+      padding: 30px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      color: #fff;
+      box-shadow: 0 4px 0 #0088cc;
+      background: #00aaff;
+      cursor: pointer;
+    }
+    .btn + .btn {
+      margin-left: 10px;
+    }
+    .btn.inactive {
+      opacity: 0.5;
+    }
+    #spinButton {
+      margin: 0 auto;
+      width: 240px;
+      padding: 7px;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      color: #fff;
+      box-shadow: 0 4px 0 #e91b0c;
+      background: #f44336;
+      cursor: pointer;
+    }
+    #spinButton.inactive {
+      opacity: 0.5;
+    }
+
+    .copy {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: #00aaff;
+      font-weight: bold;
+      font-size: 16px;
+    }
+</style>
 </head>
 <body>
   <div>
@@ -19,9 +125,6 @@
     <div class="copy">By ＠Fujiwara_Yuta, Thanks to @Ishi </div>
     <div>Refactor By ＠ArcCosine, Thanks to @foooomio</div>
 </div>
-<audio id="audio_drum" src="audio/drumroll.wav"></audio>
-<audio id="audio_cymbal" src="audio/cymbal.wav"></audio>
-
 <script type="text/javascript" src="js/Bingo.js"></script>
 </body>
 </html>
