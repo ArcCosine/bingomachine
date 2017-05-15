@@ -53,7 +53,7 @@
             this.stopButton.addEventListener("click", function(){ _self.stopSlot(); }, false );
         },
         clickSpin: function(){
-            if (this.isPlaying){
+            if (this.isPlaying || this.bingoArray.length === 0){
                 return;
             }
             this.soundManager.playDrum();
