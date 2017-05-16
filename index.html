@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
   <title>BINGO MACHINE</title>
 <style type="text/css">
@@ -109,6 +110,34 @@ body {
       font-weight: bold;
       font-size: 16px;
     }
+    @media screen and (max-width: 479px ){
+      body {
+        margin: 8px 0px;
+      }
+      .panel{
+        width: 30%;
+        font-size: 44vw;
+        line-height: 44vw;
+      }
+      .bingo {
+        width: 4%;
+        padding: 1%;
+        font-size: 4vw;
+        line-height: 4vw;
+        margin-bottom: 1vw;
+      }
+
+      .bingo + .bingo {
+        margin-left: 0.5%;
+      }
+      #result {
+        margin-bottom: 1vw;
+      }
+      .copy {
+        margin-bottom: 1vw;
+      }
+    }
+
 </style>
 </head>
 <body>

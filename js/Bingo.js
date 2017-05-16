@@ -7,17 +7,20 @@
     Bingo.prototype = {
         init: function(num){
             // create bingo array
-            //this.bingoArray = Array.from(Array(num+1).keys()).slice(1);
             this.bingoArray = [];
             for( var i=1; i<=num;i++ ){
                 this.bingoArray.push(i);
             }
+            // in the future
+            // this.bingoArray = Array.from(Array(num+1).keys()).slice(1);
 
             // initialize value
             this.timer = null;
             this.isPlaying = false;
+            // selected subscript
+            this.subScript = 0;
             // selected bingonumber
-            this.bingoNum  = 0;
+            this.selectedNum = 1;
 
             // get elements
             this.leftPanel = document.getElementById("left-panel");
@@ -65,8 +68,9 @@
             this.timer = setInterval( function(){ _self.showRandom(); } , 25 );
         },
         showRandom: function(){
-            this.bingoNum = Math.floor(Math.random() * this.bingoArray.length);
-            var showText = this.showNumber(this.bingoArray[this.bingoNum]);
+            this.subScript = Math.floor(Math.random() * this.bingoArray.length);
+            this.selectedNum = this.bingoArray[this.subScript];
+            var showText = this.showNumber(this.selectedNum);
             this.leftPanel.textContent = showText.substr(0,1);
             this.rightPanel.textContent = showText.substr(1,2);
         },
@@ -86,12 +90,12 @@
 
             // change color
             var bingoDiv = document.querySelectorAll(".bingo");
-            var tBingo = this.bingoArray[this.bingoNum]-1;
-            bingoDiv[tBingo].textContent = this.showNumber(this.bingoArray[this.bingoNum]);
+            var tBingo = this.selectedNum-1;
+            bingoDiv[tBingo].textContent = this.showNumber(this.selectedNum);
             bingoDiv[tBingo].className = "bingo unmatched";
 
             // delete selected number
-            this.bingoArray.splice(this.bingoNum,1);
+            this.bingoArray.splice(this.subScript,1);
 
             // init
             this.isPlaying = false;
@@ -118,14 +122,15 @@
             };
 
             var drumBuffer = null;
-            var context = new (window.AudioContext || window.webkitAudioContext)();
-            context.decodeAudioData(data2buffer(DRUM_DATA)).then(function(buffer) {
+            var AudioContext = window.AudioContext || window.webkitAudioContext;
+            var context = new AudioContext();
+            context.decodeAudioData(data2buffer(DRUM_DATA),function(buffer) {
                 drumBuffer = buffer;
             });
 
             var cymbalBuffer = null;
-            var context2 = new (window.AudioContext || window.webkitAudioContext)();
-            context2.decodeAudioData(data2buffer(CYMBAL_DATA)).then(function(buffer2){
+            var context2 = new AudioContext();
+            context2.decodeAudioData(data2buffer(CYMBAL_DATA),function(buffer2){
                 cymbalBuffer = buffer2;
             });
 
@@ -163,7 +168,7 @@
                 cymbal.start(0);
             }
         }
-    }
+    };
 
     // start 75
     new Bingo(75);
