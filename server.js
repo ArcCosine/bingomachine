@@ -3,8 +3,8 @@ var http = require("http"),
     path = require("path"),
     fs = require("fs"),
     port = process.argv[2] || 8888;
- 
-     
+
+
 http.createServer(function(request, response) {
 
 	var Response = {
@@ -13,7 +13,7 @@ http.createServer(function(request, response) {
 			var header = {
 				"Access-Control-Allow-Origin":"*",
 				"Pragma": "no-cache",
-				"Cache-Control" : "no-cache"	   
+				"Cache-Control" : "no-cache"
 			}
 
 			response.writeHead(200, header);
@@ -24,17 +24,17 @@ http.createServer(function(request, response) {
 			response.writeHead(404, {"Content-Type": "text/plain"});
 			response.write("404 Not Found\n");
 			response.end();
-		
+
 		},
 		"500":function(err){
 			response.writeHead(500, {"Content-Type": "text/plain"});
 			response.write(err + "\n");
 			response.end();
-		
+
 		}
 	}
 
-  
+
 	var uri = url.parse(request.url).pathname
 	, filename = path.join(process.cwd(), uri);
 
@@ -45,12 +45,12 @@ http.createServer(function(request, response) {
 
 		fs.readFile(filename, "binary", function(err, file){
 		if (err) { Response["500"](err); return ; }
-			Response["200"](file, filename);   
-		}); 
+			Response["200"](file, filename);
+		});
 
 	});
- 
-   
+
+
 }).listen(parseInt(port, 10));
-  
+
 console.log("Server running at http://localhost:" + port );
