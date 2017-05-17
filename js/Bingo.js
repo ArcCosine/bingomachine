@@ -23,7 +23,7 @@
             this.leftPanel = document.getElementById("left-panel");
             this.rightPanel = document.getElementById("right-panel");
             this.stopButton = document.getElementById("stop-btn");
-            this.spinButton = document.getElementById("spinButton");
+            this.spinButton = document.getElementById("spin-btn");
 
             // sound manager
             this.soundManager = this.getSoundObject();
@@ -48,10 +48,10 @@
         },
         bindEvent: function(){
             var _self = this;
-            this.spinButton.addEventListener("click", function(){ _self.clickSpin(); }, false );
+            this.spinButton.addEventListener("click", function(){ _self.startSlot(); }, false );
             this.stopButton.addEventListener("click", function(){ _self.stopSlot(); }, false );
         },
-        clickSpin: function(){
+        startSlot: function(){
             var _self = this;
             if (this.isPlaying || this.bingoArray.length === 0){
                 return;
