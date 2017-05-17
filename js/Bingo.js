@@ -113,15 +113,17 @@
                 return buffer.buffer;
             };
 
+            var AudioContext = window.AudioContext || window.webkitAudioContext;
+
             var drumBuffer = null;
-            var context = new (window.AudioContext || window.webkitAudioContext)();
-            context.decodeAudioData(data2buffer(DRUM_DATA)).then(function(buffer) {
+            var context = new AudioContext();
+            context.decodeAudioData(data2buffer(DRUM_DATA),function(buffer) {
                 drumBuffer = buffer;
             });
 
             var cymbalBuffer = null;
-            var context2 = new (window.AudioContext || window.webkitAudioContext)();
-            context2.decodeAudioData(data2buffer(CYMBAL_DATA)).then(function(buffer2){
+            var context2 = new AudioContext();
+            context2.decodeAudioData(data2buffer(CYMBAL_DATA),function(buffer2){
                 cymbalBuffer = buffer2;
             });
 
